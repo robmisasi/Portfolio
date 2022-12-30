@@ -21,11 +21,15 @@ const App = () => {
       {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
       {/* @ts-ignore */}
       <HistoryRouter history={history}>
-        <MainNav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutLazy history={history} />} />
-        </Routes>
+        <header>
+          <MainNav />
+        </header>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutLazy history={history} />} />
+          </Routes>
+        </main>
       </HistoryRouter>
     </>
   );
