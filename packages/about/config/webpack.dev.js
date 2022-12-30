@@ -2,23 +2,33 @@ const { merge } = require("webpack-merge");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
 const commonConfig = require("./webpack.common");
-const packageJson = require("../package.json");
+const { dependencies } = require("../package.json");
 
 const devConfig = {
   mode: "development",
+  devtool: "inline-source-map",
   output: {
     publicPath: "http://localhost:8078/",
+    clean: true,
   },
   devServer: {
     port: 8078,
-    historyApiFallback: true,
+    historyApiFallback: { index: "/index.html" },
   },
   plugins: [
     new ModuleFederationPlugin({
       name: "about",
-      shared: packageJson.dependencies,
-    })
-  ]
-}
+      filename: "remoteEntry.js",
+      exposes: {
+        "./AboutApp": "./src/bootstrap",
+      },
+      shared: {
+        react: dependencies.react,
+        "react-dom": dependencies["react-dom"],
+        "react-router-dom": dependencies["react-router-dom"],
+      },
+    }),
+  ],
+};
 
 module.exports = merge(commonConfig, devConfig);

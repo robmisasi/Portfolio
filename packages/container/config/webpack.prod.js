@@ -1,7 +1,9 @@
 const { merge } = require("webpack-merge");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const commonConfig = require("./webpack.common");
-const packageJson = require("../package.json");
+const { dependencies } = require("../package.json");
+
+const domain = process.env.PRODUCTION_DOMAIN;
 
 const prodConfig = {
   mode: "production",
@@ -12,9 +14,16 @@ const prodConfig = {
   plugins: [
     new ModuleFederationPlugin({
       name: "container",
-      shared: packageJson.dependencies
-    })
-  ]
-}
+      shared: {
+        react: dependencies.react,
+        "react-dom": dependencies["react-dom"],
+        "react-router-dom": dependencies["react-router-dom"],
+      },
+      remotes: {
+        about: `about@${domain}/about/latest/remoteEntry.js`,
+      },
+    }),
+  ],
+};
 
 module.exports = merge(commonConfig, prodConfig);

@@ -1,9 +1,15 @@
-import React from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+
+import App from "./App";
 
 const bootstrap = (container: HTMLElement) => {
   const root = createRoot(container);
-  root.render(<h1>Hello World!</h1>);
+  root.render(
+    <StrictMode>
+      <App />
+    </StrictMode>
+  );
 };
 
 const appRoot = document.getElementById("root");

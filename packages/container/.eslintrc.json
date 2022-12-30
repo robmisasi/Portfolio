@@ -13,7 +13,19 @@
     "prettier",
     "plugin:prettier/recommended"
   ],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module",
     "project": "./tsconfig.json"
-  }
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "rules": {
+    "import/prefer-default-export": "off",
+    "react/function-component-definition": "off"
+  },
+  "ignorePatterns": ["config"]
 }

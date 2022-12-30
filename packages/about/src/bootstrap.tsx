@@ -1,4 +1,4 @@
-import React from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import {
   createMemoryHistory,
@@ -26,7 +26,11 @@ const mount = (
   }
 
   const root = createRoot(container);
-  root.render(<h1>Hello World from about app!</h1>);
+  root.render(
+    <StrictMode>
+      <h2>Hello World from about app!</h2>
+    </StrictMode>
+  );
 
   return {
     onParentNavigate: (update: Update) => {

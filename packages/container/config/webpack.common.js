@@ -9,12 +9,19 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-react", "@babel/preset-env", "@babel/preset-typescript"],
-            plugins: ["@babel/plugin-transform-runtime"],
-          }
-        }
-      }
-    ]
+            presets: [
+              ["@babel/preset-react", { runtime: "automatic" }],
+              "@babel/preset-env",
+              "@babel/preset-typescript",
+            ],
+            plugins: [
+              "@babel/plugin-transform-runtime",
+              "@babel/plugin-transform-react-jsx-source",
+            ],
+          },
+        },
+      },
+    ],
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
@@ -22,6 +29,6 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
-    })
-  ]
-}
+    }),
+  ],
+};
