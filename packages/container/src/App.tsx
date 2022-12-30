@@ -27,6 +27,10 @@ const App = () => {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route
+              path="/work"
+              element={<h1>Hello World from Work Page!</h1>}
+            />
             <Route path="/about" element={<AboutLazy history={history} />} />
           </Routes>
         </main>
