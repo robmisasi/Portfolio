@@ -7,6 +7,7 @@ import {
 import { createBrowserHistory } from "history";
 
 import MainNav from "./MainNav";
+import Home from "./pages/Home";
 
 import "./index.css";
 
@@ -22,7 +23,8 @@ const App = () => {
       <HistoryRouter history={history}>
         <MainNav />
         <Routes>
-          <Route path="/" element={<AboutLazy />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutLazy history={history} />} />
         </Routes>
       </HistoryRouter>
     </>
