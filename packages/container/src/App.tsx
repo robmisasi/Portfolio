@@ -21,7 +21,7 @@ const App = () => {
       {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
       {/* @ts-ignore */}
       <HistoryRouter history={history}>
-        <header>
+        <header className="w-full flex justify-center">
           <MainNav />
         </header>
         <main>

@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const MainNav = () => {
   return (
-    <nav className="w-full flex justify-end p-4">
+    <nav className="w-10/12 flex p-4">
       <NavLink to="/" className="p-2">
         Home
       </NavLink>
